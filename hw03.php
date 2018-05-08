@@ -21,7 +21,7 @@ echo "<br>";
 */
 
 $cities_str = "Новосибирск Санкт-Петербург Москва Волгоград Оренбург Владимир";
-$cities_arr = explode (" ", $cities_str); 
+$cities_arr = explode(" ", $cities_str); 
 asort($cities_arr);
 $cities_str_sorted = implode(" ", $cities_arr);
 echo "$cities_str_sorted";
@@ -55,9 +55,9 @@ function str_convert ($str, $converter) {
         return "Это не строка";
     }
 }
-echo str_convert ("перевод всех символов в верхний регистр", 'upper');
-echo str_convert ("ПЕРЕВОД ВСЕХ СИМВОЛОВ В НИЖНИЙ РЕГИСТР", 'lower');
-echo str_convert ("Once upon a time", 'capitalize');
+echo str_convert("перевод всех символов в верхний регистр", 'upper');
+echo str_convert("ПЕРЕВОД ВСЕХ СИМВОЛОВ В НИЖНИЙ РЕГИСТР", 'lower');
+echo str_convert("Once upon a time", 'capitalize');
 echo "<br>";
 
 /*

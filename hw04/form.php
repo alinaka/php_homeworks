@@ -9,9 +9,9 @@ $post = $_POST;
     <?php else: ?>
     <form method="post" action="form.php" id="form">
         <label for="login">Login</label>
-        <input id="login" name="login">
+        <input id="login" name="login" required>
         <label for="password"></label>
-        <input type="password" id="password" name="password">
+        <input type="password" id="password" name="password" required>
         <button type="submit">Отправить</button>
     </form>
     <?php endif;?>

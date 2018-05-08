@@ -16,10 +16,9 @@
     function checkForm() {
         var reg_login =  /[a-zA-Z]{1}\w{3,19}/; // alinaka
         var reg_pwd = /(?=.{9,})(?=(.*\d){2,})(?=.*[a-z])(?=.*[A-Z])(?=.*\W)/g; // 4Tq3Xc5A!
-        if (login.value && password.value) {
             if (login.value.match(reg_login) && password.value.match(reg_pwd)){
-                    console.log('подходит');
-                    return 1;
+                console.log('подходит');
+                return 1;
             } else if (password.value.match(reg_pwd)) {
                 alert('Логин должен состоять от 4 до 20 символов, и не должен начинаться с цифры');
                 return 0;
@@ -31,10 +30,5 @@
 	                       - содержит обязательно один из неалфавитных символов (например, !, $, #, %).'`);
                 return 0;
             }
-        } else {
-            alert("Введите логин и пароль!");
-            return 0;
-        }
-    }
-    
+    }   
 }());
