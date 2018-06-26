@@ -1,0 +1,79 @@
+1.
+
+SELECT SUM(Good.price*Cart_good.amount) 
+FROM Cart_good INNER JOIN Good 
+ON Cart_good.id_good = Good.id_good 
+WHERE Cart_good.id_cart = 1;
+
+SELECT SUM(Good.price*Cart_good.amount)
+FROM Cart_good, Good 
+WHERE Cart_good.id_good = Good.id_good 
+AND Cart_good.id_cart = 1;
+
+2. SELECT Cart.id_cart, SUM(Good.price*Cart_good.amount) AS sum
+FROM Cart_good INNER JOIN Good 
+ON Cart_good.id_good = Good.id_good 
+INNER JOIN Cart 
+ON Cart_good.id_cart = Cart.id_cart 
+GROUP BY Cart.id_cart 
+HAVING SUM(Good.price*Cart_good.amount) > 1000;
+
+SELECT Cart.name, SUM(Good.price*Cart_good.amount) AS sum
+FROM Cart_good 
+JOIN Good 
+ON Cart_good.id_good = Good.id_good 
+JOIN Cart 
+ON Cart_good.id_cart = Cart.id_cart 
+GROUP BY Cart_good.id_cart
+HAVING sum > 1000;
+
+
+SELECT Cart_good.id_cart, SUM(Good.price*Cart_good.amount) AS sum
+FROM Cart_good, Good 
+WHERE Cart_good.id_good = Good.id_good
+GROUP BY Cart_good.id_cart
+HAVING sum > 1000;
+
+3.  SELECT * FROM Good 
+LEFT JOIN Cart_good ON Cart_good.id_cart = 2 
+and Cart_good.id_good = Good.id_good 
+WHERE Cart_good.id_good IS NULL;
+
+4. SELECT SUM(Good.price*Cart_good.amount)/COUNT(DISTINCT(Cart.id_cart)) AS avg
+FROM Cart_good INNER JOIN Good 
+ON Cart_good.id_good = Good.id_good 
+INNER JOIN Cart 
+ON Cart_good.id_cart = Cart.id_cart;
+
+SELECT AVG(sum_by_cart)
+	FROM (
+		SELECT SUM(Cart_good.amount * Good.price) as sum_by_cart 
+		FROM Cart_good JOIN Good 
+		ON Cart_good.id_good = Good.id_good 
+		GROUP BY Cart_good.id_cart) 
+	as avg;
+
+5.
+
+SELECT MIN(sum_by_cart)
+	FROM (
+		SELECT SUM(Cart_good.amount * Good.price) as sum_by_cart 
+		FROM Cart_good JOIN Good 
+		ON Cart_good.id_good = Good.id_good 
+		GROUP BY Cart_good.id_cart) 
+	as min;
+
+SELECT MAX(sum_by_cart)
+	FROM (
+		SELECT SUM(Cart_good.amount * Good.price) as sum_by_cart 
+		FROM Cart_good JOIN Good 
+		ON Cart_good.id_good = Good.id_good 
+		GROUP BY Cart_good.id_cart) 
+	as max;
+
+
+SELECT AVG(SUM(cart_good.amount*good.price)) 
+FROM cart_good JOIN good 
+ON cart_good.id_good = good.id_good 
+GROUP BY cart_good.id_cart;
+
